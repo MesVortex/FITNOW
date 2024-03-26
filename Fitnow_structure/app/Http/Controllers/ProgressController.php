@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Progress;
-use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 
 class ProgressController extends Controller
@@ -15,7 +14,6 @@ class ProgressController extends Controller
     {
         $progress = Progress::all();
         $data = [
-            'status' => 200,
             'progress' => $progress,
         ];
         return response()->json($data, 200);
@@ -54,7 +52,6 @@ class ProgressController extends Controller
 
         if($success){
             $data = [
-                'status'=>200,
                 'message'=>'progress added succefully!'
             ];
             return response()->json($data, 200);
@@ -104,7 +101,6 @@ class ProgressController extends Controller
 
         if($success){
             $data = [
-                'status'=>200,
                 'message'=>'progress updated succefully!'
             ];
             return response()->json($data, 200);
@@ -119,8 +115,7 @@ class ProgressController extends Controller
         $progress->delete();
 
         $data = [
-            'status'=>200,
-            'message'=>'progress delted succefully!'
+            'message'=>'progress deleted succefully!'
         ];      
         return response()->json($data, 200);
     }
@@ -137,7 +132,6 @@ class ProgressController extends Controller
 
         if($success){
             $data = [
-                'status'=>200,
                 'message'=>'status changed succefully!'
             ];
             return response()->json($data, 200);
