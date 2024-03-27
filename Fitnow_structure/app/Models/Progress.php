@@ -16,6 +16,7 @@ class Progress extends Model
         'bicep_thickness',
         'pec_width',
         'calve_thickness',
+        'userID',
         'status',
     ];
 }

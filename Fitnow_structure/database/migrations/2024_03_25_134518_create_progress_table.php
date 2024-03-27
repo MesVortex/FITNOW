@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('bicep_thickness');
             $table->integer('pec_width');
             $table->integer('calve_thickness');
+            $table->unsignedBigInteger('userID');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
             $table->string('status')->default('unfinished');
             $table->timestamps();
         });

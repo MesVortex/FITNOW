@@ -52,7 +52,7 @@ class UserController extends Controller
 
         return response($response, 201);
     }
-    
+
     public function loginUser(Request $request)
     {
         try {
@@ -85,6 +85,7 @@ class UserController extends Controller
                 'status' => true,
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken("API TOKEN")->plainTextToken
+
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -94,9 +95,10 @@ class UserController extends Controller
         }
     }
 
-    public function logout(User $user)
+    public function logout()
     {
-        $user->tokens()->delete();
+        /** @disregard P1013 [tokens function exists and working] **/
+        auth()->user()->tokens()->delete();
 
         return [
             'message' => 'logged out'

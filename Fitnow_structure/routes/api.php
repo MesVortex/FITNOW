@@ -21,11 +21,13 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'loginUser']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/progress/history', [ProgressController::class, 'showUserProgress']);
+    Route::post('u', [ProgressController::class, 'store']);
     Route::post('progress', [ProgressController::class, 'store']);
     Route::put('progress/{progress}', [ProgressController::class, 'update']);
     Route::delete('progress/{progress}', [ProgressController::class, 'destroy']);
     Route::patch('progress/{progress}', [ProgressController::class, 'updateStatus']);
-    Route::post('/logout/{user}', [UserController::class, 'logout']);
+    Route::post('/logout', [UserController::class, 'logout']);
 });
 
 // Route::resource('progress', ProgressController::class);
