@@ -19,4 +19,9 @@ class Progress extends Model
         'userID',
         'status',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userID');
+    }
+   
 }
