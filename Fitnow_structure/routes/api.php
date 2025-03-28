@@ -22,7 +22,6 @@ Route::post('/login', [UserController::class, 'loginUser']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/progress/history', [ProgressController::class, 'showUserProgress']);
-    Route::post('u', [ProgressController::class, 'store']);
     Route::post('progress', [ProgressController::class, 'store']);
     Route::put('progress/{progress}', [ProgressController::class, 'update']);
     Route::delete('progress/{progress}', [ProgressController::class, 'destroy']);
